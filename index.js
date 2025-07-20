@@ -9,18 +9,15 @@ const authRoutes = require('./router/AuthenticationRouter');
 const categoryRoutes = require('./router/Real-Estate-Category');
 const TypeRoutes = require('./router/Real-Estate-Type');
 const realEstateRoutes = require('./router/Real-Estate');
-const realEstateImageRoutes = require("./router/realEstateImages");
-const realEstateAppointments = require("./router/Real-Estate-Appointments");
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const realEstateImageRoutes = require("./router/RealEstateImages");
 
+const realEstateAppointments = require("./router/Real-Estate-Appointments");
 const app = express();
 app.use(cors({
   origin: "*",
   credentials: true
 }));
-
 app.use(bodyParser.json());
-
 // api đăng nhập đăng kí thông tin cá nhân
 app.use('/api/auth', authRoutes); 
 // api quản lý danh mục bất động sản
@@ -34,6 +31,10 @@ app.use('/api/update-images', realEstateImageRoutes);
 // đặt lịnh xem nhà
 app.use('/api/appointments', realEstateAppointments);
 // Home
+
+
+
+
 app.get('/', (req, res) => res.send('Welcome to Bất Động Sản API!'));
 
 // Khởi động server
